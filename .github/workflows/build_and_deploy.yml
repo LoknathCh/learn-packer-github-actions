@@ -8,12 +8,16 @@ on:
       - "staging"
       - "main"
 
+permissions:
+      id-token: write
+      contents: read
+
 env:
   HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
   HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
   HCP_PROJECT_ID: ${{ secrets.HCP_PROJECT_ID }}
   HCP_ORGANIZATION_ID: ${{ secrets.HCP_ORGANIZATION_ID }}
-  HCP_BUCKET_NAME: "learn-packer-github-actions"
+  HCP_BUCKET_NAME: "learn-packer-azure-github-actions-01"
 
 jobs:
   build-image:
@@ -25,12 +29,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Configure Azure CLI Login
+        uses: azure/login@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-1
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: 'Run Azure CLI commands'
+        run: |
+          az account show
+          az group list
+          pwd 
 
       - name: Packer Init
         run: packer init .
