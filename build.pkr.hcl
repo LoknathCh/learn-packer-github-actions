@@ -40,7 +40,7 @@ source "azure-arm" "windows-2016" {
 build {
 
   hcp_packer_registry {
-    bucket_name = "lrn-pckr-azr-win-gthb-act-01"
+    bucket_name = "lr-pkr-az-win-gh-act-02"
     description = "Github Actions HCP Packer Terraform Cloud Run POC"
 
     bucket_labels = {
@@ -50,9 +50,9 @@ build {
 
   sources = ["source.azure-arm.windows-2016"]
 
-  provisioner "powershell" {
+  /*provisioner "powershell" {
     inline = ["Add-WindowsFeature Web-Server", "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }", "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }", "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit", "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"]
-  }
+  }*/
 
   post-processor "manifest" {
     output     = "packer_manifest.json"
