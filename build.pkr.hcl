@@ -19,7 +19,7 @@ source "azure-arm" "windows-2016" {
     task = "Windows VM Image deployment"
   }
   build_resource_group_name         = "gimgpocRG"
-  #client_id                         = "379f9cf9-247e-4289-923a-d701e876e0b1"
+  client_id                         = "379f9cf9-247e-4289-923a-d701e876e0b1"
   #client_secret                     = "DQl8Q~9L8cA8dHMl2LnnN-tEreqFskR1UqIojak6"
   communicator                      = "winrm"
   image_offer                       = "WindowsServer"
@@ -28,8 +28,8 @@ source "azure-arm" "windows-2016" {
   managed_image_name                = "packer_Azure_Windows_{{timestamp}}_v${var.version}"
   managed_image_resource_group_name = "gimgpocRG"
   os_type                           = "Windows"
-  #subscription_id                   = "b391cc0b-e637-4543-bb37-2c8c78e135cf"
-  #tenant_id                         = "9b94192d-9d69-46d4-a7f7-733234e26805"
+  subscription_id                   = "b391cc0b-e637-4543-bb37-2c8c78e135cf"
+  tenant_id                         = "9b94192d-9d69-46d4-a7f7-733234e26805"
   vm_size                           = "Standard_D2_v2"
   winrm_insecure                    = true
   winrm_timeout                     = "5m"
