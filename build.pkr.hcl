@@ -40,7 +40,7 @@ source "azure-arm" "windows-2016" {
 build {
 
   hcp_packer_registry {
-    bucket_name = "lr-pkr-az-win-gh-act-021"
+    bucket_name = "lr-pkr-az-win-gh-act-022"
     description = "Github Actions HCP Packer Terraform Cloud Run POC"
 
     bucket_labels = {
