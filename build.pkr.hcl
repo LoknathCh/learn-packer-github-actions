@@ -20,7 +20,7 @@ source "azure-arm" "windows-2016" {
   }
   build_resource_group_name         = "gimgpocRG"
   client_id                         = "379f9cf9-247e-4289-923a-d701e876e0b1"
-  #client_secret                     = "DQl8Q~9L8cA8dHMl2LnnN-tEreqFskR1UqIojak6"
+  client_secret                     = "DQl8Q~9L8cA8dHMl2LnnN-tEreqFskR1UqIojak6"
   communicator                      = "winrm"
   image_offer                       = "WindowsServer"
   image_publisher                   = "MicrosoftWindowsServer"
