@@ -19,8 +19,8 @@ source "azure-arm" "windows-2016" {
     task = "Windows VM Image deployment"
   }
   build_resource_group_name         = "gimgpocRG"
-  client_id                         = "${env("AZURE_CLIENT_ID")}"
-  client_secret                     = "${env("AZURE_CLIENT_SECRET")}"
+  client_id                         = "${var.client_id}"
+  client_secret                     = "${var.client_secret}"
   communicator                      = "winrm"
   image_offer                       = "WindowsServer"
   image_publisher                   = "MicrosoftWindowsServer"
@@ -28,8 +28,8 @@ source "azure-arm" "windows-2016" {
   managed_image_name                = "packer_Azure_Windows_{{timestamp}}_v${var.version}"
   managed_image_resource_group_name = "gimgpocRG"
   os_type                           = "Windows"
-  subscription_id                   = "${env("AZURE_SUBSCRIPTION_ID")}"
-  tenant_id                         = "${env("AZURE_TENANT_ID")}"
+  subscription_id                   = "${var.subscription_id}"
+  tenant_id                         = "${var.tenant_id}"
   vm_size                           = "Standard_D2_v2"
   winrm_insecure                    = true
   winrm_timeout                     = "5m"
