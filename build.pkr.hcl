@@ -47,7 +47,7 @@ source "azure-arm" "cis-win-2019-stig" {
 build {
 
   hcp_packer_registry {
-    bucket_name = "lr-pkr-az-hrd-win-2019-gh-act-01"
+    bucket_name = "lr-pkr-az-hrd-win-2019-gh-act-02"
     description = "Github Actions HCP Packer Hardened Win 2019 POC"
 
     bucket_labels = {
