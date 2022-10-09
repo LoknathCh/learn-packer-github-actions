@@ -25,7 +25,7 @@ source "azure-arm" "cis-win-2019-stig" {
     plan_publisher = "center-for-internet-security-inc"
   }
 
-  build_resource_group_name         = "gimgpocRG"
+  build_resource_group_name         = "myResourceGroup"
   client_id                         = "${var.client_id}"
   client_secret                     = "${var.client_secret}"
   communicator                      = "winrm"
@@ -33,7 +33,7 @@ source "azure-arm" "cis-win-2019-stig" {
   image_publisher                   = "center-for-internet-security-inc"
   image_sku                         = "cis-win-2019-stig"
   managed_image_name                = "packer_Azure_CIS_Windows_2019{{timestamp}}_v${var.version}"
-  managed_image_resource_group_name = "gimgpocRG"
+  managed_image_resource_group_name = "myResourceGroup"
   os_type                           = "Windows"
   subscription_id                   = "${var.subscription_id}"
   tenant_id                         = "${var.tenant_id}"
